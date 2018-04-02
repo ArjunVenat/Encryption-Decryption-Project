@@ -17,6 +17,10 @@ int main() {
 	string abcd;
 	cout << "Please Enter the Message" << endl;
 	getline(cin, abcd);
+	
+	//After entering the message, a part of the song below will be played
+	PlaySound("C:\\Users\\arjun\\Downloads\\2001_ A Space Odyssey Theme Song (Also sprach Zarathustra) (1).wav", NULL, SND_SYNC);
+	
 	int i = abcd.length();
 	cout << endl;
 
@@ -69,7 +73,11 @@ int main() {
 	//Cipher Text matrix is created inside this function
 	matrixmult (i, random, ptm);
 	
+	//For dramatic effect, the rest of the song will be played at this point
+
+	PlaySound("C:\\Users\\arjun\\Downloads\\2001_ A Space Odyssey Theme Song (Also sprach Zarathustra) (7).wav", NULL, SND_SYNC);
+	
 	//End of encyption
 
-	system("pause");
+	return 0;
 }
