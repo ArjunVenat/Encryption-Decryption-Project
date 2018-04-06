@@ -8,6 +8,8 @@
 
 using namespace std;
 
+
+
 void charconverter(int i, char storage[], int part2[], int y) {
 	//The element from the character array is stored into an integer array
 
@@ -64,23 +66,24 @@ void arrangement1x3(int i, int part2[], int ptm[7][300])
 			int a = part2[h];
 			ptm[r][c] = a;
 			h++;
-			cout << ptm[r][c] << "  ";
+		}
+	}
+	for (int k = 1; k <= 3; k++) {
+		for (int l = 1; l <= (i/3); l++) {
+			cout << ptm[k][l] << "  ";
 		}
 		cout << endl;
-	}
+}
+
+
 }
 
 
 
 
-
-void matrixmult (int i, int random[3][3], int ptm[7][300]) 
+void matrixmult (int i, int random[3][3], int ptm[7][300], int ctm[7][300]) 
 {
-
-	//Cipher Text Matrix = "ctm"
-	int ctm[7][300];
-
-
+	
 	for (int c = 1; c <= (i / 3); c++) {
 
 		for (int w = 0; w < 3; w++) {
@@ -92,13 +95,14 @@ void matrixmult (int i, int random[3][3], int ptm[7][300])
 				r++;
 			}
 
+			//Cipher Text Matrix  = "ctm"
 			ctm[w][c] = a;
 
 		}
 	}
 
-	for (int c = 1; c <= (i / 3); c++) {
-		for (int w = 0; w < 3; w++)
+	for (int w = 0; w < 3; w++) {
+		for (int c = 1; c <= i/3; c++)
 			cout << ctm[w][c] << "     ";
 
 		cout << endl;
