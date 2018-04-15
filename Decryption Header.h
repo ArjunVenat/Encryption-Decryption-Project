@@ -122,3 +122,4 @@ void cofactorMatrix(int A[3][3], float C[3][3], float temp[2][2]) //Co-factor Ma
 
 
 }
+
