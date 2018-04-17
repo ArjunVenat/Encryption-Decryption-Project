@@ -20,9 +20,9 @@ float cofactor(float temp[2][2], float b) //Calculates the co-factors
 	float determinantA;
 	determinantA = temp[0][0] * temp[1][1] - temp[1][0] * temp[0][1];
 
-	//	cout << "VALUES: \n" << temp[0][0] << " " << temp[1][1] << " " << temp[1][0] << " " << temp[0][1] << endl;
-	//	cout << "ARITHMETIC: \n" << temp[0][0] * temp[1][1] << "  " << temp[1][0] * temp[0][1] << endl;
-	//	cout << "DETERMINANTa: \n" << determinantA << endl;
+	//    cout << "VALUES: \n" << temp[0][0] << " " << temp[1][1] << " " << temp[1][0] << " " << temp[0][1] << endl;
+	//    cout << "ARITHMETIC: \n" << temp[0][0] * temp[1][1] << "  " << temp[1][0] * temp[0][1] << endl;
+	//    cout << "DETERMINANTa: \n" << determinantA << endl;
 
 	return pow(-1, b)*determinantA;
 }
@@ -115,7 +115,7 @@ void cofactorMatrix(int A[3][3], float C[3][3], float temp[2][2]) //Co-factor Ma
 				C[i][j] = cofactor(temp, b);
 			}
 
-			//	cout << "C: " << C[i][j] << " \n" << endl;
+			//    cout << "C: " << C[i][j] << " \n" << endl;
 			if (j == 2);
 		}
 
@@ -123,43 +123,33 @@ void cofactorMatrix(int A[3][3], float C[3][3], float temp[2][2]) //Co-factor Ma
 }
 
 
-void Decryption() {
 
+
+void Decryption(int b, int random[3][3], int ctm[3][700]) {
 	float C[3][3], Adjoint[3][3], Inverse[3][3], ctm3x1[3][1], Decoded[3][700];
 	int Decoded2[3][700];
 	float determinant[3][5];
 	float temp[2][2];
 	float determinantA;
 	char message[3][700];
-	int b;
-	cout << "Length of the Message: "; //Remove after integration
-	cin >> b;
-	cout << endl;
+	
+	
 
 	srand((int)time(0));
 
 	//Random 3X3 Matrix (Key) to multiply the plain text with to convert to cipertext
-	//The job of the integrator is to deliver the values of these matrices (random Key Matrix and Cipher Text Matrix) from the encryption file to this Decryption File
-
-	int random[3][3];
-	float ctm[3][500];
 
 
 	cout << "Key Matrix: \n" << endl;
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 3; j++)
 		{
-			cin >> random[i][j];
+			cout << random[i][j] << " ";
+				if (j == 2)
+					cout << endl;
 		}
 	cout << endl;
 
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++)
-		{
-			cout << random[i][j] << "  ";
-			if (j == 2)
-				cout << endl;
-		}
 
 	cout << endl;
 
@@ -189,7 +179,7 @@ void Decryption() {
 		}
 	cout << endl;
 
-	//	| A | = a11a22a33 + a12a23a31 + a13a21a32 – a31a22a13 – a32a23a11 – a33a21a12
+	//    | A | = a11a22a33 + a12a23a31 + a13a21a32 – a31a22a13 – a32a23a11 – a33a21a12
 	determinantA = determinant[0][0] * determinant[1][1] * determinant[2][2] +
 		determinant[0][1] * determinant[1][2] * determinant[2][3] +
 		determinant[0][2] * determinant[1][3] * determinant[2][4] -
@@ -199,7 +189,7 @@ void Decryption() {
 
 
 	cout << endl;
-	cout << "\nInverse Matrix: \n" << endl;	//Inverse Matrix
+	cout << "\nInverse Matrix: \n" << endl;    //Inverse Matrix
 	for (int i = 0; i < 3; ++i)
 		for (int j = 0; j < 3; ++j)
 		{
@@ -218,9 +208,8 @@ void Decryption() {
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < b / 3; j++)
 		{
-			cin >> ctm[i][j];
-
-			if (j == 3)
+			cout << ctm[i][j] << " ";
+			if (j == (b / 3) - 1)
 				cout << endl;
 		}
 
@@ -305,7 +294,5 @@ void Decryption() {
 			cout << message[j][i];
 		}
 	cout << endl;
-
-
 
 }
