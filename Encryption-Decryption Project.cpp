@@ -25,10 +25,8 @@ int main()
 	int ctm[3][700];
 	int i = 1, b = 1;
 
-	char input[80];
 	char temp[80];
 	string filename;
-	char answer;
 	char choice;
 
 	//IntroSequence();
@@ -65,14 +63,17 @@ int main()
 	
 		if (choice == 'e' || choice == 'E') {
 			Encryption(random, ctm, i);
-
+			
 			cout << "The Length of the Message including fillers: " << i << endl;
 			Decryption(i, random, ctm);
+			system("pause");
 		}
 	
 		if (choice == 'd' || choice == 'D') {
+		
+
 			Decryption(i, random, ctm);
-			return 0;
+			system("pause");
 		}
 
 			
@@ -88,7 +89,7 @@ int main()
 		Outfile << "Length of Message Including Fillers: ";
 			Outfile << i << endl;
 
-		cout << "Key Matrix: " << endl;
+		Outfile << "Key Matrix: " << endl;
 		for (int c = 0; c < 3; ++c)
 			for (int r = 0; r < 3; ++r)
 			{
