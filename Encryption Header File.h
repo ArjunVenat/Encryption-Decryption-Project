@@ -13,7 +13,7 @@ using namespace std;
 void charconverter(int i, char storage[], int part2[], int y) {
 	//The element from the character array is stored into an integer array
 
-	for (int O = 1; O <= i; O++) {
+	for (int O = 0; O <= i; O++) {
 
 		if (O > (i - y)) {
 			for (int c = 1; c <= y; c++)
@@ -60,7 +60,7 @@ void arrangement1x3(int i, int part2[], int ptm[7][300])
 
 	int h = 1;
 
-	for (int c = 1; c <= (i / 3); c++) {
+	for (int c = 0; c <= (i / 3); c++) {
 
 		for (int r = 1; r <= 3; r++) {
 			int a = part2[h];
@@ -68,8 +68,8 @@ void arrangement1x3(int i, int part2[], int ptm[7][300])
 			h++;
 		}
 	}
-	for (int k = 1; k <= 3; k++) {
-		for (int l = 1; l <= (i / 3); l++) {
+	for (int k = 0; k <= 3; k++) {
+		for (int l = 0; l <= (i / 3); l++) {
 			cout << ptm[k][l] << "  " << "|" << "  ";
 		}
 		cout << endl;
@@ -81,12 +81,12 @@ void arrangement1x3(int i, int part2[], int ptm[7][300])
 
 
 
-void matrixmult(int i, int random[3][3], int ptm[7][300], int ctm[7][300])
+void matrixmult(int i, int random[3][3], int ptm[7][300], int ctm[3][700])
 {
 
 	cout << "Cipher Text Matrix" << endl;
 	cout << endl;
-	for (int c = 1; c <= (i / 3); c++) {
+	for (int c = 0; c <= (i / 3); c++) {
 
 		for (int w = 0; w < 3; w++) {
 			int a = 0;
@@ -119,58 +119,37 @@ void matrixmult(int i, int random[3][3], int ptm[7][300], int ctm[7][300])
 
 
 		cout << endl;
-	}
 
-	cout << endl;
-	cout << "OR" << endl;
-	cout << endl;
-
-	for (int w = 0; w < 3; w++) {
-		for (int c = 1; c <= i / 3; c++) {
-
-			if (ctm[w][c] > 0)
-				cout << " " << ctm[w][c] << "  ";
-
-			else
-			{
-				cout << ctm[w][c] << "  ";
-			}
-
-		}
-
+		cout << endl;
 
 	}
-	cout << endl;
-	cout << endl;
-
 }
 
 
-void det(int random[3][3], int& d)
+void det (int random[3][3], int& d)
 {
 	d = random[0][0] * ((random[1][1] * random[2][2]) - (random[2][1] * random[1][2])) - random[0][1] * (random[1][0] * random[2][2] - random[2][0] * random[1][2]) + random[0][2] * (random[1][0] * random[2][1] - random[2][0] * random[1][1]);
 
 }
 
 
-void Encryption() {
-
+void Encryption (int random[3][3], int ctm[3][700], int& i) {
+	
 	int goodbye;
-
 	//Allowing the user to input the message that is going to be encrypted
 
 	char storage[1000];
 	int part2[1000];
 	string abcd;
 	cout << "Please Enter the Message" << endl;
-
+	cin.get();
 	getline(cin, abcd);
 
 	//After entering the message, a part of the song below will be played
 
 	//PlaySound("C:\\Users\\arjun\\Downloads\\Rick Astley - Never Gonna Give You Up (Video) (online-audio-converter.com).wav", NULL, SND_ASYNC);
 
-	int i = abcd.length();
+	i = abcd.length();
 	cout << endl;
 
 	//Converts the string into several characters, and each character is stored into an array
@@ -182,9 +161,7 @@ void Encryption() {
 		part2[h] = storage[h];
 	}
 
-
 	//Accounts for Fillers
-
 
 	int x = i;
 	int y = 0;
@@ -195,15 +172,11 @@ void Encryption() {
 		i = i + y;
 	}
 
-
-	//Function which converts each character into a number which is then displayed. 
-
+	//Function which converts each character into a number which is then displayed.
 
 	charconverter(i, storage, part2, y);
 
 	//Random 3X3 Matrix (Key) to multiply the plain text with to convert to cipertext
-
-	int random[3][3];
 
 	cout << "Key Matrix\n" << endl;
 	int w;
@@ -211,12 +184,10 @@ void Encryption() {
 
 	srand((int)time(0));
 
-
 	for (w = 0; w < 3; w++)
 		for (q = 0; q < 3; q++) {
 			random[w][q] = (rand() % 20) - 10;
 		}
-
 
 	for (w = 0; w < 3; w++)
 		for (q = 0; q < 3; q++) {
@@ -227,27 +198,14 @@ void Encryption() {
 
 	cout << endl;
 
-	cout << "OR" << endl;
-	cout << endl;
-
-
-	for (w = 0; w < 3; w++)
-		for (q = 0; q < 3; q++) {
-
-			cout << random[w][q] << "  ";
-
-		}
-
 
 	cout << endl;
-
 	cout << endl;
 
 	cout << "Character Converter" << endl;
 
 	//Plain Text Matrix
 	int ptm[7][300];
-
 
 	//Function which converts the Plaintext into an array and is then organized into 3x3 arrays.
 
@@ -256,15 +214,9 @@ void Encryption() {
 
 	//Function which multiplies the Key matrix with the Plain Text Matrix to create ciphertext
 
-
 	//Cipher Text matrix
-	int ctm[7][300];
 
 	matrixmult(i, random, ptm, ctm);
 
-
 	//End of the Encyption Program
-
-
-
 }
