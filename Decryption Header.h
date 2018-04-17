@@ -18,7 +18,7 @@ using namespace std;
 
 
 void Decryption(int b, int random[3][3], int ctm[3][700]) {
-	float C[3][3], Adjoint[3][3], Inverse[3][3], ctm3x1[3][1], Decoded[3][700];
+	float C[3][3], Adjoint[3][3], Inverse[3][3], Decoded[3][700];
 
 	float determinant[3][5];
 	float temp[2][2];
@@ -58,12 +58,12 @@ void Decryption(int b, int random[3][3], int ctm[3][700]) {
 	for (int i = 0; i < 3; ++i)
 		for (int j = 0; j < 5; ++j)
 		{
-			determinant[i][j] = random[i][j];
+			determinant[i][j] = static_cast <float> (random[i][j]);
 
 			if (j == 3)
-				determinant[i][j] = random[i][0];
+				determinant[i][j] = static_cast <float> (random[i][0]);
 			if (j == 4)
-				determinant[i][j] = random[i][1];
+				determinant[i][j] = static_cast <float> (random[i][1]);
 
 		}
 	cout << endl;
@@ -130,7 +130,6 @@ void Decryption(int b, int random[3][3], int ctm[3][700]) {
 				cout << endl;
 		}
 
-	float d;
 	//Accuracy Issue
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < (b / 3); j++)
@@ -146,7 +145,7 @@ void Decryption(int b, int random[3][3], int ctm[3][700]) {
 		}
 	cout << endl;
 	//Number to Character Conversion
-	for (int i = 0, a; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < (b / 3); j++)
 		{
 
@@ -157,8 +156,8 @@ void Decryption(int b, int random[3][3], int ctm[3][700]) {
 				message[i][j] = ' ';
 
 			else {
-
-				a = Decoded[i][j];
+				float a;
+				a =  Decoded[i][j];
 
 				a -= 64;
 				a /= 2;
@@ -166,7 +165,7 @@ void Decryption(int b, int random[3][3], int ctm[3][700]) {
 				a += 64;
 
 
-				message[i][j] = a;
+				message[i][j] = static_cast<char> (a);
 
 				if (j == (b / 3) - 1)
 					cout << endl;
