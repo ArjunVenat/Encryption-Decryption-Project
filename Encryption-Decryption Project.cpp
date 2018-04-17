@@ -1,128 +1,112 @@
 #include <iostream>
+#include <Windows.h>
+#include <string>
+#include <fstream>
+#include "Encryption Header.h"
+#include "Decryption Header.h"
+#include <stdlib.h>
+#include <cmath>
 #include <ctime>
 #include <cstdlib>
 #include <sstream>
-#include <string>
-#include <windows.h>
-#include "Encryption Header File.h"
 #include <Mmsystem.h>
 #include <mciapi.h>
 #pragma comment(lib, "Winmm.lib")
-
 using namespace std;
 
-int main() {
-	
-	int goodbye;
 
-	//Allowing the user to input the message that is going to be encrypted
+int main()
+{
 
-	char storage[1000];
-	int part2[1000];
-	string abcd;
-	cout << "Please Enter the Message" << endl;
+int random[3][3];
+int ctm[3][700];
+int i = 1, b = 1;
 
-	getline(cin, abcd);
-
-	//After entering the message, a part of the song below will be played
-	
-	PlaySound("C:\\Users\\arjun\\Downloads\\Rick Astley - Never Gonna Give You Up (Video) (online-audio-converter.com).wav", NULL, SND_ASYNC);
-
-	int i = abcd.length();
-	cout << endl;
-
-	//Converts the string into several characters, and each character is stored into an array
-	
-	istringstream characters(abcd);
-
-	for (int h = 1; h <= i; h++) {
-		characters >> noskipws >> storage[h];
-		part2[h] = storage[h];
-	}
+	char input[80];
+	char temp[80];
+	string filename;
+	char answer;
+	char choice;
 
 
-	//Accounts for Fillers
+		cout << "\t\nWELCOME TO THE ENCRYPTION AND DECRYPTION PROJECT!" << endl;
+		cout << "Would you like to Encrypt {E/e} or Decrypt {D/d}" << endl;
 
+		cin >> choice;
 
-	int x = i;
-	int y = 0;
+		if (choice == 'e' || choice == 'E')
+		{
+			Encryption(random, ctm, i);
+			cout << i << endl;
+			Decryption(i, random, ctm);
 
-	if ((i % 3) != 0)
-	{
-		y = 3 - (i % 3);
-		i = i + y;
-}
-			
+		}
 		
-	//Function which converts each character into a number which is then displayed. 
-	
+		if (choice == 'd' || choice == 'D')
+		{
+		}
 
-		charconverter(i, storage, part2, y);
+		cout << "\t\nFILE PATH: " << endl;
 
-		//Random 3X3 Matrix (Key) to multiply the plain text with to convert to cipertext
+		cout << "Enter filename: ";
+		getline(cin, filename);    //allows for spaces to be read as spaces
+								   //use geline(cin, filename) for strings only
 
-		int random[3][3];
+		cout << "\nCreating FILE " << filename << endl;
+		filename = filename.append(".txt"); //forces the file to be a text file
 
-				cout << "Key Matrix\n" << endl;
-			int w;
-			int q;
-			
-			srand((int)time(0));
+											//ofstream is for outputing. it is used to open the file
+		ofstream Outfile(filename, ios::app); //app is appending    //Outline is a HANDLE that is used to output
+											  //it is an object now
+		if (Outfile.fail())    //if the file is open
+		{
+			cout << "Error" << endl;
+			exit(1);
+		}
+		cin.ignore();
 
-		
-				for (w = 0; w < 3; w++)
-					for (q = 0; q < 3; q++) {
-						random[w][q] = (rand() % 20) - 10;
+		cout << endl;
+		cout << "\nENCRYPTION: " << endl;
+
+		for (int x = 0; x < 10; ++x)
+		{
+			cout << ".";
+			Sleep(100);
+		}
+
+		cout << "Key Matrix: " << endl;
+		for (int c = 0; c < 3; ++c)
+			for (int r = 0; r < 3; ++r)
+			{
+				cout << random[c][r] << " ";
+				if (r == 2)
+					cout << endl;
 			}
-				
-
-			for (w = 0; w < 3; w++)
-				for (q = 0; q < 3; q++) {
-					cout << random[w][q] << " ";
-					if (q == 2)
-						cout << endl;
-				}
-
-			cout << endl;
-
-			cout << "OR" << endl;
-			cout << endl;
-			
-			
-				for (w = 0; w < 3; w++)
-					for (q = 0; q < 3; q++) {
-
-						cout << random[w][q] << "  ";
-
-					}
-						
-
 		cout << endl;
+		cout << "CTM Matrix: " << endl;
+		for (int c = 0; c < 3; c++)
+			for (char r = 0; r != '\r'; r++)
+			{
+				cout << ctm[c][r] << " ";
+				if (r == (i / 3) - 1)
+					cout << endl;
+			}
+		cout << "Number of characters: " << endl;
+		cout << i;
 
-		cout << endl;
-		
-		cout << "Character Converter" << endl;
+		Outfile << "\n";
+		Outfile.close(); //there are () after close because it is a function that accepts no parameters
+
+		ifstream Infile(filename);
+
+		while (!(Infile.eof())) //.eof() tells when it hits the end of the file
+		{
+			Infile.getline(temp, 80);
+			cout << temp << endl;
+		}
+		Infile.close();
 	
-		//Plain Text Matrix
-		int ptm[7][300];
 
+	return 0;
+}
 
-		//Function which converts the Plaintext into an array and is then organized into 3x3 arrays.
-
-		arrangement1x3(i, part2, ptm);
-		cout << endl;
-
-		//Function which multiplies the Key matrix with the Plain Text Matrix to create ciphertext
-			
-
-		//Cipher Text matrix
-		int ctm[7][300];
-
-		matrixmult(i, random, ptm, ctm);
-
-
-		//End of the Encyption Program
-
-		cin >> goodbye;
-		return 0;
-};
