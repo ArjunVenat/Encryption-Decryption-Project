@@ -24,94 +24,96 @@ float cofactor(float temp[2][2], float b) //Calculates the co-factors
 	//    cout << "ARITHMETIC: \n" << temp[0][0] * temp[1][1] << "  " << temp[1][0] * temp[0][1] << endl;
 	//    cout << "DETERMINANTa: \n" << determinantA << endl;
 
-	return pow(-1, b)*determinantA;
+	return static_cast <float> (pow(-1, b)) * determinantA;
 }
 
 void cofactorMatrix(int A[3][3], float C[3][3], float temp[2][2]) //Co-factor Matrix
 {
-	float b;
+
+	
+		float b;
 	for (int i = 0; i < 3; ++i)
 		for (int j = 0; j < 3; ++j)
 		{
-			b = i + j;
+			b = static_cast <float> (i) + j;
 			if (i == 0 && j == 0)
 			{
-				temp[0][0] = A[1][1];
-				temp[0][1] = A[1][2];
-				temp[1][0] = A[2][1];
-				temp[1][1] = A[2][2];
+				temp[0][0] = static_cast <float> (A[1][1]);
+				temp[0][1] = static_cast <float> (A[1][2]);
+				temp[1][0] = static_cast <float> (A[2][1]);
+				temp[1][1] = static_cast <float> (A[2][2]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 0 && j == 1)
 			{
-				temp[0][0] = A[1][0];
-				temp[0][1] = A[1][2];
-				temp[1][0] = A[2][0];
-				temp[1][1] = A[2][2];
+				temp[0][0] = static_cast <float> (A[1][0]);
+				temp[0][1] = static_cast <float> (A[1][2]);
+				temp[1][0] = static_cast <float> (A[2][0]);
+				temp[1][1] = static_cast <float> (A[2][2]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 0 && j == 2)
 			{
-				temp[0][0] = A[1][0];
-				temp[0][1] = A[1][1];
-				temp[1][0] = A[2][0];
-				temp[1][1] = A[2][1];
+				temp[0][0] = static_cast <float> (A[1][0]);
+				temp[0][1] = static_cast <float> (A[1][1]);
+				temp[1][0] = static_cast <float> (A[2][0]);
+				temp[1][1] = static_cast <float> (A[2][1]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 1 && j == 0)
 			{
-				temp[0][0] = A[0][1];
-				temp[0][1] = A[0][2];
-				temp[1][0] = A[2][1];
-				temp[1][1] = A[2][2];
+				temp[0][0] = static_cast <float> (A[0][1]);
+				temp[0][1] = static_cast <float> (A[0][2]);
+				temp[1][0] = static_cast <float> (A[2][1]);
+				temp[1][1] = static_cast <float> (A[2][2]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 1 && j == 1)
 			{
-				temp[0][0] = A[0][0];
-				temp[0][1] = A[0][2];
-				temp[1][0] = A[2][0];
-				temp[1][1] = A[2][2];
+				temp[0][0] = static_cast <float> (A[0][0]);
+				temp[0][1] = static_cast <float> (A[0][2]);
+				temp[1][0] = static_cast <float> (A[2][0]);
+				temp[1][1] = static_cast <float> (A[2][2]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 1 && j == 2)
 			{
-				temp[0][0] = A[0][0];
-				temp[0][1] = A[0][1];
-				temp[1][0] = A[2][0];
-				temp[1][1] = A[2][1];
+				temp[0][0] = static_cast <float> (A[0][0]);
+				temp[0][1] = static_cast <float> (A[0][1]);
+				temp[1][0] = static_cast <float> (A[2][0]);
+				temp[1][1] = static_cast <float> (A[2][1]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 2 && j == 0)
 			{
-				temp[0][0] = A[0][1];
-				temp[0][1] = A[0][2];
-				temp[1][0] = A[1][1];
-				temp[1][1] = A[1][2];
+				temp[0][0] = static_cast <float> (A[0][1]);
+				temp[0][1] = static_cast <float> (A[0][2]);
+				temp[1][0] = static_cast <float> (A[1][1]);
+				temp[1][1] = static_cast <float> (A[1][2]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 2 && j == 1)
 			{
-				temp[0][0] = A[0][0];
-				temp[0][1] = A[0][2];
-				temp[1][0] = A[1][0];
-				temp[1][1] = A[1][2];
+				temp[0][0] = static_cast <float> (A[0][0]);
+				temp[0][1] = static_cast <float> (A[0][2]);
+				temp[1][0] = static_cast <float> (A[1][0]);
+				temp[1][1] = static_cast <float> (A[1][2]);
 				C[i][j] = cofactor(temp, b);
 			}
 
 			if (i == 2 && j == 2)
 			{
-				temp[0][0] = A[0][0];
-				temp[0][1] = A[0][1];
-				temp[1][0] = A[1][0];
-				temp[1][1] = A[1][1];
+				temp[0][0] = static_cast <float> (A[0][0]);
+				temp[0][1] = static_cast <float> (A[0][1]);
+				temp[1][0] = static_cast <float> (A[1][0]);
+				temp[1][1] = static_cast <float> (A[1][1]);
 				C[i][j] = cofactor(temp, b);
 			}
 
