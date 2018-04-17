@@ -29,7 +29,7 @@ char GetChar(int iGenerator, char cBase, int iRange)
 
 
 
-void IntroSequence(){
+void IntroSequence() {
 	// Color code
 	HANDLE  hConsole; //HANDLE is the type that Windows uses to refer to Windows objects
 					  //HANDLE is similar to a pointer
@@ -151,5 +151,5 @@ void IntroSequence(){
 	Sleep(SLEEPTIME);
 	cout << "\n";
 
-
+	system("cls");
 }
