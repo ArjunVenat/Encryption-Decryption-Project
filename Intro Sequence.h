@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+
 #include <ctime>
 #include <cstdlib>
 #include <sstream>
@@ -30,6 +31,8 @@ char GetChar(int iGenerator, char cBase, int iRange)
 
 
 void IntroSequence() {
+	system("cls");
+
 	// Color code
 	HANDLE  hConsole; //HANDLE is the type that Windows uses to refer to Windows objects
 					  //HANDLE is similar to a pointer
@@ -42,7 +45,11 @@ void IntroSequence() {
 	int l = 5;
 	int m = 1;
 
+	// Plays a Song
+	
 	PlaySound("C:\\Users\\arjun\\Downloads\\Cowboy Bebop Cut.wav", NULL, SND_ASYNC);
+
+
 	for (int b = 0; b < MATRIXDURATION; ++b) //while (true) 
 	{
 		int i = 0;
@@ -79,6 +86,7 @@ void IntroSequence() {
 		// Delay
 		Sleep(10);
 	}
+	system("cls");
 
 	//Displays the computer screen and name of group and group members
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
@@ -152,4 +160,4 @@ void IntroSequence() {
 	cout << "\n";
 
 	system("cls");
-}
+} 
