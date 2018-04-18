@@ -30,8 +30,8 @@ float cofactor(float temp[2][2], float b) //Calculates the co-factors
 void cofactorMatrix(int A[3][3], float C[3][3], float temp[2][2]) //Co-factor Matrix
 {
 
-	
-		float b;
+
+	float b;
 	for (int i = 0; i < 3; ++i)
 		for (int j = 0; j < 3; ++j)
 		{
@@ -118,7 +118,7 @@ void cofactorMatrix(int A[3][3], float C[3][3], float temp[2][2]) //Co-factor Ma
 			}
 
 			//    cout << "C: " << C[i][j] << " \n" << endl;
-			
+
 		}
 
 
