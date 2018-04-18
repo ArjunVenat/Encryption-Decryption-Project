@@ -9,22 +9,11 @@
 
 using namespace std;
 
+void Encryption(string abcd, char storage[1000], int part2[1000], int random[3][3], int ctm[3][700], int& i) {
 
 
-void Encryption (int random[3][3], int ctm[3][700], int& i) {
-	
-	//Allowing the user to input the message that is going to be encrypted
 
-	char storage[1000];
-	int part2[1000];
-	string abcd;
-	cout << "Please Enter the Message" << endl;
-	cin.get();
-	getline(cin, abcd);
-
-	//After entering the message, a part of the song below will be played
-
-	//PlaySound("C:\\Users\\arjun\\Downloads\\Rick Astley - Never Gonna Give You Up (Video) (online-audio-converter.com).wav", NULL, SND_ASYNC);
+	PlaySound("C:\\Users\\arjun\\Downloads\\Rick Astley - Never Gonna Give You Up (Video) (online-audio-converter.com).wav", NULL, SND_ASYNC);
 
 	i = abcd.length();
 	cout << endl;
@@ -49,7 +38,7 @@ void Encryption (int random[3][3], int ctm[3][700], int& i) {
 		i = i + y;
 	}
 
-	//Function which converts each character into a number which is then displayed.
+	//Function which converts each character into a number which is then displayed. 
 
 	charconverter(i, storage, part2, y);
 
@@ -74,9 +63,6 @@ void Encryption (int random[3][3], int ctm[3][700], int& i) {
 		}
 
 	cout << endl;
-
-
-	cout << endl;
 	cout << endl;
 
 	cout << "Character Converter" << endl;
@@ -95,5 +81,4 @@ void Encryption (int random[3][3], int ctm[3][700], int& i) {
 
 	matrixmult(i, random, ptm, ctm);
 
-	//End of the Encyption Program
 }
