@@ -1,9 +1,15 @@
 #include <iostream>
 #include "Decryption Header 2.h"
+#include <Mmsystem.h>
+#include <mciapi.h>
+#pragma comment(lib, "Winmm.lib")
 using namespace std;
 
 void Decryption(int i, int ctm[3][700], int random[3][3]) {
 	int b = i;
+
+	PlaySound("C:\\Users\\arjun\\Downloads\\Legend of Zelda - Chest Opening and Getting Item. (audio-cutter.com).wav", NULL, SND_SYNC);
+
 
 	float C[3][3], Adjoint[3][3], Inverse[3][3], Decoded[3][700];
 	float determinant[3][5];
@@ -136,6 +142,9 @@ void Decryption(int i, int ctm[3][700], int random[3][3]) {
 			cout << message[j][i];
 		}
 	cout << endl;
+
+	PlaySound("C:\\Users\\arjun\\Downloads\\Legend of Zelda - Chest Opening and Getting Item. (audio-cutter.com) (1).wav", NULL, SND_SYNC);
+
 
 }
 	
