@@ -13,7 +13,7 @@ void Encryption(string abcd, char storage[1000], int part2[1000], int random[3][
 
 
 
-	PlaySound("C:\\Users\\arjun\\Downloads\\Rick Astley - Never Gonna Give You Up (Video) (online-audio-converter.com).wav", NULL, SND_ASYNC);
+	
 
 	i = abcd.length();
 	cout << endl;
