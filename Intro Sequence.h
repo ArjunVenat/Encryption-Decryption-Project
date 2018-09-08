@@ -47,7 +47,6 @@ void IntroSequence() {
 
 	// Plays a Song
 	
-	PlaySound("C:\\Users\\arjun\\Downloads\\Cowboy Bebop Cut.wav", NULL, SND_ASYNC);
 
 
 	for (int b = 0; b < MATRIXDURATION; ++b) //while (true) 
